@@ -181,8 +181,6 @@ function xmlsitemap_schema() {
         'length' => 32,
         'not null' => TRUE,
         'default' => '',
-      // 'unsigned' => TRUE,
-      // 'default' => 0,.
       ],
       'type' => [
         'description' => 'Primary key with id; the type of item (e.g. node, user, etc.).',
@@ -244,9 +242,6 @@ function xmlsitemap_schema() {
         'description' => 'The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0.',
         'type' => 'float',
         'default' => NULL,
-      // @todo Convert this field to non-nullable.
-      // 'default' => 0.5,
-      // 'not null' => NULL,
       ],
       'priority_override' => [
         'description' => 'A boolean that if TRUE means that the priority field has been overridden from its default value.',

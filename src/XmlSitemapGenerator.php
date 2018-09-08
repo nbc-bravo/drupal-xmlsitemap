@@ -237,12 +237,6 @@ class XmlSitemapGenerator implements XmlSitemapGeneratorInterface {
 
     while ($link = $links->fetchAssoc()) {
       $link['language'] = $link['language'] != LanguageInterface::LANGCODE_NOT_SPECIFIED ? xmlsitemap_language_load($link['language']) : $url_options['language'];
-      // @todo Figure out a way to bring back the alias preloading optimization.
-      // @codingStandardsIgnoreStart
-      //   if (!empty($link['loc']) && $url_options['alias']) {
-      //     $link['loc'] = $this->getPathAlias($link['loc'], $link['language']->getId());
-      //   }
-      // @codingStandardsIgnoreEnd
       $link_options = [
         'language' => $link['language'],
         'xmlsitemap_link' => $link,
