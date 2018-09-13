@@ -27,6 +27,14 @@ use Drupal\xmlsitemap\XmlSitemapInterface;
  *     "uuid" = "uuid",
  *     "label" = "label"
  *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "chunks",
+ *     "links",
+ *     "max_filesize",
+ *     "context",
+ *   },
  *   links = {
  *     "edit-form" = "/admin/config/search/xmlsitemap/{xmlsitemap}/edit",
  *     "delete-form" = "/admin/config/search/xmlsitemap/{xmlsitemap}/delete"
