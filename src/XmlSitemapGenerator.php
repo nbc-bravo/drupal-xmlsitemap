@@ -221,7 +221,7 @@ class XmlSitemapGenerator implements XmlSitemapGeneratorInterface {
 
     $query = db_select('xmlsitemap', 'x');
     $query->fields('x', [
-      'loc', 'lastmod', 'changefreq', 'changecount', 'priority', 'language', 'access', 'status',
+      'loc', 'type', 'subtype', 'lastmod', 'changefreq', 'changecount', 'priority', 'language', 'access', 'status',
     ]);
     $query->condition('x.access', 1);
     $query->condition('x.status', 1);
@@ -277,6 +277,16 @@ class XmlSitemapGenerator implements XmlSitemapGeneratorInterface {
         // per the sitemaps.org specification.
         $element['priority'] = number_format($link['priority'], 1);
       }
+
+      \Drupal::moduleHandler()->alter('xmlsitemap_element', $element, $link, $sitemap);
+
+      // Bail if our alter has blanked the element.
+      if (empty($element)) {
+        // Roll back the link count by one.
+        $link_count--;
+        continue;
+      }
+
       $writer->writeSitemapElement('url', $element);
     }
 
